@@ -7,13 +7,13 @@ require("chai")
   .should();
 
 contract("TokenFarm", (accounts) => {
-  let daiToken;
+  let daiToken, dappToken, tokenFarm;
   before(async () => {
     daiToken = await DaiToken.new();
-    // dappToken = await DappToken.new();
-    // tokenFarm = await TokenFarm.new(dappToken.address, daiToken.address);
+    dappToken = await DappToken.new();
+    tokenFarm = await TokenFarm.new(dappToken.address, daiToken.address);
 
-    // await dappToken.transfer(TokenFarm.address, "1000000000000000000000000");
+    await dappToken.transfer(tokenFarm.address, "1000000000000000000000");
   });
 
   describe("Mock DAI Deployment", async () => {
