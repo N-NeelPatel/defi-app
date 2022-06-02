@@ -10,11 +10,15 @@ contract("TokenFarm", (accounts) => {
   let daiToken;
   before(async () => {
     daiToken = await DaiToken.new();
+    // dappToken = await DappToken.new();
+    // tokenFarm = await TokenFarm.new(dappToken.address, daiToken.address);
+
+    // await dappToken.transfer(TokenFarm.address, "1000000000000000000000000");
   });
 
   describe("Mock DAI Deployment", async () => {
     it("has a name", async () => {
-      const name = daiToken.name();
+      const name = await daiToken.name();
       assert.equal(name, "Mock DAI Token");
     });
   });
